@@ -18,9 +18,7 @@ import MyAssets from "./pages/dashboard/employee/MyAssets"
 import MyTeam from "./pages/dashboard/employee/MyTeam"
 import EmployeeProfile from "./pages/dashboard/employee/EmployeeProfile"
 import PaymentSuccess from "./pages/PaymentSuccess"
-
-
-
+import NotFound from "./pages/NotFound"
 
 
 function App() {
@@ -63,11 +61,11 @@ function App() {
           <Route path="profile" element={<HrProfile />} />
         </Route>
 
-        <Route path="/payment-success" element={<PaymentSuccess />} />
-
       </Route>
 
-      <Route path="*" element={<div>404</div>} />
+      <Route path="/payment-success" element={<PaymentSuccess />} />
+
+      <Route path="*" element={<NotFound />} />
     </Routes>
   )
 }
