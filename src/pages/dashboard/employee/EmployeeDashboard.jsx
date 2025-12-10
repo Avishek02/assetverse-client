@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom"
 
+
 function EmployeeDashboard() {
   return (
     <div className="min-h-screen grid md:grid-cols-[240px_1fr]">
@@ -15,6 +16,7 @@ function EmployeeDashboard() {
           <NavLink to="/dashboard/employee/my-team" className="btn btn-ghost justify-start">
             My Team
           </NavLink>
+
           <NavLink to="/dashboard/employee/profile" className="btn btn-ghost justify-start">
             Profile
           </NavLink>
