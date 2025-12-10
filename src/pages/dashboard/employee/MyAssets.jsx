@@ -1,6 +1,8 @@
+
 import { useEffect, useState } from "react"
 import apiClient from "../../../api/client"
 import toast from "react-hot-toast"
+
 
 function MyAssets() {
   const [assets, setAssets] = useState([])
@@ -16,6 +18,21 @@ function MyAssets() {
     fetchAssets()
   }, [])
 
+  const handleReturn = id => {
+    apiClient
+      .patch(`/api/assigned-assets/${id}/return`)
+      .then(() => {
+        toast.success("Asset returned")
+        fetchAssets()
+      })
+      .catch(err => {
+        console.error(err)
+        toast.error("Failed to return asset")
+      })
+  }
+
+
+
   return (
     <div>
       <h1 className="text-2xl font-bold mb-4">My Assets</h1>
@@ -29,6 +46,8 @@ function MyAssets() {
               <th>Company</th>
               <th>Assigned</th>
               <th>Status</th>
+              <th>Actions</th>
+
             </tr>
           </thead>
           <tbody>
@@ -48,6 +67,15 @@ function MyAssets() {
                 <td>{item.companyName}</td>
                 <td>{new Date(item.assignmentDate).toLocaleDateString()}</td>
                 <td className="capitalize">{item.status}</td>
+
+                <td>
+                  {item.status.toLowerCase() === "assigned"
+                    && item.assetType === "Returnable" && (
+                      <button className="btn btn-xs btn-outline" onClick={() => handleReturn(item._id)}>
+                        Return
+                      </button>
+                    )}
+                </td>
               </tr>
             ))}
             {assets.length === 0 && (
