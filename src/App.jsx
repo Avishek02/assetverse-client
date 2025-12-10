@@ -14,6 +14,7 @@ import UpgradePackage from "./pages/dashboard/hr/UpgradePackage"
 import HrProfile from "./pages/dashboard/hr/HrProfile"
 import RoleRoute from "./routes/RoleRoute"
 import RequestAsset from "./pages/dashboard/employee/RequestAsset"
+import MyAssets from "./pages/dashboard/employee/MyAssets"
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           }
         >
           <Route path="request-asset" element={<RequestAsset />} />
+          <Route path="my-assets" element={<MyAssets />} />
 
         </Route>
 
