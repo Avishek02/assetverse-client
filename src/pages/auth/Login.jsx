@@ -3,7 +3,7 @@ import { AuthContext } from "../../providers/AuthProvider"
 import { Link, useNavigate } from "react-router-dom"
 
 function Login() {
-  const { loginWithEmail, loginWithGoogle, saveUserToBackend } = useContext(AuthContext)
+  const { loginWithEmail, loginWithGoogle, saveUserToBackend, checkUserExists } = useContext(AuthContext)
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false)
@@ -24,7 +24,7 @@ function Login() {
       .catch(err => console.error(err))
   }
 
- const handleGoogle = async () => {
+  const handleGoogle = async () => {
     try {
       const result = await loginWithGoogle()
       const gUser = result.user
@@ -55,7 +55,6 @@ function Login() {
       console.error(err)
     }
   }
-
 
   return (
     <div className="flex justify-center items-center min-h-screen p-4">

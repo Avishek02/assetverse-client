@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
-import { AuthContext } from "../providers/AuthProvider"
+import { AuthContext } from "../../providers/AuthProvider"
 
 function ChooseRole() {
   const location = useLocation()
