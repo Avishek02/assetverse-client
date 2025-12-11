@@ -17,9 +17,7 @@ function UpgradePackage() {
     setLoadingId(pkg._id)
     apiClient
       .post("/api/payments/create-checkout-session", {
-        packageName: pkg.name,
-        employeeLimit: pkg.employeeLimit,
-        price: pkg.price,
+        packageName: pkg.name
       })
       .then(res => {
         if (res.data.url) {

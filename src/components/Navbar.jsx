@@ -7,7 +7,7 @@ function Navbar() {
   const { user, logout, role } = useContext(AuthContext)
   const profileImage = user?.photoURL || "https://res.cloudinary.com/dbanni0vy/image/upload/v1765461579/default_profile_shlfo5.jpg"
 
-  console.log("ROLE:", role)
+  // console.log("ROLE:", role)
 
 
 
