@@ -20,6 +20,11 @@ function EmployeeDashboard() {
           <NavLink to="/dashboard/employee/profile" className="btn btn-ghost justify-start">
             Profile
           </NavLink>
+
+          <NavLink to="/dashboard/employee/notices" className="btn btn-ghost justify-start">
+            Notices
+          </NavLink>
+
         </nav>
       </aside>
       <main className="p-4 bg-base-100">

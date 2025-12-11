@@ -19,6 +19,8 @@ import MyTeam from "./pages/dashboard/employee/MyTeam"
 import EmployeeProfile from "./pages/dashboard/employee/EmployeeProfile"
 import PaymentSuccess from "./pages/PaymentSuccess"
 import NotFound from "./pages/NotFound"
+import EmployeeNotices from "./pages/dashboard/employee/EmployeeNotices"
+
 
 
 function App() {
@@ -42,6 +44,8 @@ function App() {
           <Route path="my-assets" element={<MyAssets />} />
           <Route path="my-team" element={<MyTeam />} />
           <Route path="profile" element={<EmployeeProfile />} />
+          <Route path="notices" element={<EmployeeNotices />} />
+
 
         </Route>
 
