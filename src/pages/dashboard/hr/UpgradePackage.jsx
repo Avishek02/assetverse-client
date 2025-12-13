@@ -5,11 +5,17 @@ import toast from "react-hot-toast"
 function UpgradePackage() {
   const [packages, setPackages] = useState([])
   const [loadingId, setLoadingId] = useState(null)
+  const [currentPackage, setCurrentPackage] = useState("")
 
   useEffect(() => {
     apiClient
       .get("/api/packages")
       .then(res => setPackages(res.data))
+      .catch(err => console.error(err))
+
+    apiClient
+      .get("/api/users/me")
+      .then(res => setCurrentPackage(res.data.subscription || ""))
       .catch(err => console.error(err))
   }, [])
 
@@ -17,7 +23,7 @@ function UpgradePackage() {
     setLoadingId(pkg._id)
     apiClient
       .post("/api/payments/create-checkout-session", {
-        packageName: pkg.name
+        packageName: pkg.name,
       })
       .then(res => {
         if (res.data.url) {
@@ -33,9 +39,19 @@ function UpgradePackage() {
       .finally(() => setLoadingId(null))
   }
 
+  const currentPackageLabel = currentPackage
+    ? currentPackage.charAt(0).toUpperCase() + currentPackage.slice(1)
+    : "N/A"
+
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-4">Upgrade Package</h1>
+      <div className="flex items-center justify-between mb-4">
+        <h1 className="text-2xl font-bold">Upgrade Package</h1>
+        <p className="text-sm text-base-content/70">
+          Current Package: <span className="font-semibold">{currentPackageLabel}</span>
+        </p>
+      </div>
+
       <p className="text-sm mb-6 text-base-content/70">
         Choose a package to increase your employee limit.
       </p>
