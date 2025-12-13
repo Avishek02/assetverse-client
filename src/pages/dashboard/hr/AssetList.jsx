@@ -12,6 +12,10 @@ function AssetList() {
   const [search, setSearch] = useState("")
   const [assetTypeData, setAssetTypeData] = useState([])
   const [topRequestedData, setTopRequestedData] = useState([])
+  const [employees, setEmployees] = useState([])
+  const [assignAssetId, setAssignAssetId] = useState(null)
+  const [assignEmployeeEmail, setAssignEmployeeEmail] = useState("")
+
 
 
   const pieData = assetTypeData.map(item => ({
@@ -58,6 +62,42 @@ function AssetList() {
     fetchAssets()
     fetchAnalytics()
   }, [page])
+
+
+  // HR assign assets to affiliated employees
+  useEffect(() => {
+    apiClient
+      .get("/api/employees/hr")
+      .then(res => setEmployees(res.data))
+      .catch(err => console.error(err))
+  }, [])
+
+  const openAssignModal = assetId => {
+    setAssignAssetId(assetId)
+    setAssignEmployeeEmail("")
+    document.getElementById("assign_modal").showModal()
+  }
+
+  const handleDirectAssign = e => {
+    e.preventDefault()
+    apiClient
+      .post(`/api/assets/${assignAssetId}/direct-assign`, {
+        employeeEmail: assignEmployeeEmail,
+      })
+      .then(() => {
+        toast.success("Asset assigned")
+        document.getElementById("assign_modal").close()
+        fetchAssets()
+      })
+      .catch(err => {
+        console.error(err)
+        toast.error(err.response?.data?.message || "Failed to assign")
+      })
+  }
+
+
+
+
 
   const handleSearch = e => {
     e.preventDefault()
@@ -174,6 +214,11 @@ function AssetList() {
                   <button className="btn btn-xs btn-error" onClick={() => handleDelete(item._id)}>
                     Delete
                   </button>
+
+                  <button className="btn btn-xs btn-outline" onClick={() => openAssignModal(item._id)}>
+                    Direct Assign
+                  </button>
+
                 </td>
               </tr>
             ))}
@@ -207,6 +252,42 @@ function AssetList() {
           Next
         </button>
       </div>
+
+      <dialog id="assign_modal" className="modal">
+        <div className="modal-box">
+          <h3 className="font-bold text-lg mb-3">Direct Assign</h3>
+
+          <form onSubmit={handleDirectAssign} className="space-y-3">
+            <select
+              className="select select-bordered w-full"
+              value={assignEmployeeEmail}
+              onChange={e => setAssignEmployeeEmail(e.target.value)}
+              required
+            >
+              <option value="" disabled>Select employee</option>
+              {employees.map(emp => (
+                <option key={emp.employeeEmail} value={emp.employeeEmail}>
+                  {emp.employeeName} - {emp.employeeEmail}
+                </option>
+              ))}
+            </select>
+
+            <div className="flex gap-2 justify-end">
+              <button
+                type="button"
+                className="btn btn-ghost"
+                onClick={() => document.getElementById("assign_modal").close()}
+              >
+                Cancel
+              </button>
+              <button type="submit" className="btn btn-primary">
+                Assign
+              </button>
+            </div>
+          </form>
+        </div>
+      </dialog>
+
     </div>
   )
 }

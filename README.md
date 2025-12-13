@@ -110,6 +110,12 @@ HR Email: hr@testcompany.com
 HR Password: hrtest1234
 ```
 
+```
+Employee Email : tulu@gmail.com
+Employee Password : tulu1234
+
+```
+
 ---
 
 ## Project Structure
