@@ -1,13 +1,25 @@
-import { useContext, useState } from "react"
+import { useContext, useState, useEffect } from "react"
 import { AuthContext } from "../../../providers/AuthProvider"
 import apiClient from "../../../api/client"
 import toast from "react-hot-toast"
+
 
 function EmployeeProfile() {
   const { user, updateUserProfile } = useContext(AuthContext)
   const [name, setName] = useState(user?.displayName || "")
   const [profileImage, setProfileImage] = useState(user?.photoURL || "")
   const [dob, setDob] = useState("")
+
+  const [affiliations, setAffiliations] = useState([])
+
+  useEffect(() => {
+    apiClient
+      .get("/api/affiliations/me")
+      .then(res => setAffiliations(res.data))
+      .catch(err => console.error(err))
+  }, [])
+
+
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -68,6 +80,38 @@ function EmployeeProfile() {
           Save
         </button>
       </form>
+
+      <div className="card bg-base-100 shadow border">
+        <div className="card-body">
+          <h2 className="text-lg font-semibold mb-3">Affiliated Companies</h2>
+
+          {affiliations.length === 0 && (
+            <p className="text-sm text-base-content/70">No active affiliation</p>
+          )}
+
+          <div className="space-y-3">
+            {affiliations.map(item => (
+              <div key={item._id} className="flex items-center justify-between gap-3 border rounded-lg p-3">
+                <div className="flex items-center gap-3">
+                  <div className="avatar">
+                    <div className="w-10 rounded">
+                      <img src={item.companyLogo} alt={item.companyName} />
+                    </div>
+                  </div>
+                  <div>
+                    <div className="font-semibold">{item.companyName}</div>
+                    <div className="text-xs text-base-content/70">HR: {item.hrEmail}</div>
+                  </div>
+                </div>
+                <div className="text-xs text-base-content/70">
+                  {new Date(item.affiliationDate).toLocaleDateString()}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
     </div>
   )
 }
