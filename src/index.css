@@ -1,2 +1,8 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+
+:root {
+  --brand: #5B5FEF;
+  --brand-soft: rgba(91, 95, 239, 0.12);
+}

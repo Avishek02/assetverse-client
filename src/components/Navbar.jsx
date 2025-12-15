@@ -18,7 +18,7 @@ function Navbar() {
   }, [])
 
   const linkBase =
-    "relative rounded-xl px-4 py-2 text-sm font-medium text-base-content/90 transition-all hover:text-secondary hover:bg-secondary/20"
+    "relative rounded-xl px-4 py-2 text-sm font-medium text-base-content/90 transition-all hover:text-[var(--brand)] hover:bg-[var(--brand-soft)]"
 
   const PublicLinks = ({ compact = false }) => (
     <>
@@ -27,7 +27,7 @@ function Navbar() {
           to="/"
           className={() =>
             compact
-              ? "rounded-lg px-3 py-2 text-base-content/90 hover:text-secondary hover:bg-secondary/20"
+              ? "rounded-lg px-3 py-2 text-base-content/90 hover:text-[var(--brand)] hover:bg-[var(--brand-soft)]"
               : linkBase
           }
         >
@@ -39,7 +39,7 @@ function Navbar() {
           to="/join/employee"
           className={() =>
             compact
-              ? "rounded-lg px-3 py-2 text-base-content/90 hover:text-secondary hover:bg-secondary/20"
+              ? "rounded-lg px-3 py-2 text-base-content/90 hover:text-[var(--brand)] hover:bg-[var(--brand-soft)]"
               : linkBase
           }
         >
@@ -51,7 +51,7 @@ function Navbar() {
           to="/join/hr"
           className={() =>
             compact
-              ? "rounded-lg px-3 py-2 text-base-content/90 hover:text-secondary hover:bg-secondary/20"
+              ? "rounded-lg px-3 py-2 text-base-content/90 hover:text-[var(--brand)] hover:bg-[var(--brand-soft)]"
               : linkBase
           }
         >
@@ -67,6 +67,7 @@ function Navbar() {
       { to: "/dashboard/employee/my-team", label: "My Team" },
       { to: "/dashboard/employee/request-asset", label: "Request Asset" },
       { to: "/dashboard/employee/profile", label: "Profile" },
+      { to: "/dashboard/employee/notices", label: "Notices" },
     ],
     []
   )
@@ -90,17 +91,13 @@ function Navbar() {
       <div
         className={[
           "relative transition-all",
-          scrolled
-            ? "bg-base-100/80 backdrop-blur-md"
-            : "bg-base-100"
-          ,
+          scrolled ? "bg-base-100/80 backdrop-blur-md" : "bg-base-100",
         ].join(" ")}
       >
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           <div className="absolute -top-32 left-1/3 h-72 w-72 rounded-full bg-primary/10 blur-[120px]" />
           <div className="absolute -bottom-32 right-1/4 h-72 w-72 rounded-full bg-secondary/10 blur-[120px]" />
         </div>
-
 
         <div className="relative mx-auto max-w-7xl px-4 md:px-6">
           <div className="navbar min-h-[72px] px-0">
@@ -117,7 +114,10 @@ function Navbar() {
 
                   {!user && (
                     <li>
-                      <Link to="/login" className="rounded-xl px-3 py-2 text-base-content/90 hover:text-secondary hover:bg-secondary/20">
+                      <Link
+                        to="/login"
+                        className="rounded-xl px-3 py-2 text-base-content/90 hover:text-[var(--brand)] hover:bg-[var(--brand-soft)]"
+                      >
                         Login
                       </Link>
                     </li>
@@ -125,12 +125,12 @@ function Navbar() {
 
                   {user && (
                     <>
-                      {menuItems.map((it) => (
+                      {menuItems.map(it => (
                         <li key={it.to}>
                           <NavLink
                             to={it.to}
                             className={() =>
-                              "rounded-xl px-3 py-2 text-base-content/90 hover:text-secondary hover:bg-secondary/20"
+                              "rounded-xl px-3 py-2 text-base-content/90 hover:text-[var(--brand)] hover:bg-[var(--brand-soft)]"
                             }
                           >
                             {it.label}
@@ -149,7 +149,7 @@ function Navbar() {
               </div>
 
               <Link to="/" className="group flex items-center gap-2">
-                <span className="grid h-10 w-10 place-items-center rounded-2xl bg-secondary text-secondary-content shadow-md">
+                <span className="grid h-10 w-10 place-items-center rounded-2xl bg-[var(--brand)] text-white shadow-md">
                   <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
                     <path d="M12 2l9 5v10l-9 5-9-5V7l9-5z" />
                   </svg>
@@ -166,18 +166,14 @@ function Navbar() {
 
             <div className="navbar-end gap-2">
               {!user && (
-                <Link to="/login" className="btn btn-secondary rounded-2xl">
+                <Link to="/login" className="btn btn-primary rounded-2xl">
                   Login
                 </Link>
               )}
 
               {user && (
                 <div className="dropdown dropdown-end">
-                  <div
-                    tabIndex={0}
-                    role="button"
-                    className="btn btn-ghost rounded-2xl px-2 hover:bg-base-200/50"
-                  >
+                  <div tabIndex={0} role="button" className="btn btn-ghost rounded-2xl px-2 hover:bg-base-200/50">
                     <div className="flex items-center gap-3">
                       <div className="avatar">
                         <div className="w-10 rounded-2xl ring-1 ring-base-300">
@@ -196,14 +192,13 @@ function Navbar() {
                     </div>
                   </div>
 
-
                   <ul className="menu dropdown-content mt-3 w-64 rounded-2xl bg-base-100/95 p-2 shadow-xl backdrop-blur">
-                    {menuItems.map((it) => (
+                    {menuItems.map(it => (
                       <li key={it.to}>
                         <NavLink
                           to={it.to}
                           className={() =>
-                            "rounded-xl px-3 py-2 text-base-content/90 hover:text-secondary hover:bg-secondary/20"
+                            "rounded-xl px-3 py-2 text-base-content/90 hover:text-[var(--brand)] hover:bg-[var(--brand-soft)]"
                           }
                         >
                           {it.label}
