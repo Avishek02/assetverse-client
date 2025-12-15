@@ -42,6 +42,8 @@ function App() {
             </RoleRoute>
           }
         >
+          <Route index element={<MyAssets />} />
+
           <Route path="request-asset" element={<RequestAsset />} />
           <Route path="my-assets" element={<MyAssets />} />
           <Route path="my-team" element={<MyTeam />} />

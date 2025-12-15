@@ -9,7 +9,7 @@ import Loading from "../../../components/Loading"
 function EmployeeProfile() {
   const { user, updateUserProfile } = useContext(AuthContext)
   const [name, setName] = useState(user?.displayName || "")
-  const [profileImage, setProfileImage] = useState(user?.photoURL || "")
+  const [profileImage, setProfileImage] = useState(user?.photoURL || "https://res.cloudinary.com/dbanni0vy/image/upload/v1765461579/default_profile_shlfo5.jpg")
   const [dob, setDob] = useState("")
 
   const [affiliations, setAffiliations] = useState([])

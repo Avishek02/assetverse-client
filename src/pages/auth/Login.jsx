@@ -12,17 +12,24 @@ function Login() {
   const handleSubmit = e => {
     e.preventDefault()
     loginWithEmail(email, password)
-      .then(res => {
-        return saveUserToBackend({
-          email,
-          name: res.user.displayName,
-        })
-      })
-      .then(() => {
+      .then(async res => {
+        const data = await checkUserExists(res.user.email)
+
+        if (data.user?.role === "hr") {
+          navigate("/dashboard/hr")
+          return
+        }
+
+        if (data.user?.role === "employee") {
+          navigate("/dashboard/employee/my-assets")
+          return
+        }
+
         navigate("/")
       })
       .catch(err => console.error(err))
   }
+
 
   const handleGoogle = async () => {
     try {

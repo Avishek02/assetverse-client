@@ -27,8 +27,10 @@ function RegisterEmployee() {
         })
       })
       .then(() => {
-        navigate("/dashboard/employee")
+        navigate("/dashboard/employee/request-asset")
       })
+
+
       .catch(err => console.error(err))
   }
 

@@ -7,7 +7,7 @@ function HrProfile() {
   const { user, updateUserProfile } = useContext(AuthContext)
   const [name, setName] = useState(user?.displayName || "")
   const [companyName, setCompanyName] = useState("")
-  const [companyLogo, setCompanyLogo] = useState("")
+  const [companyLogo, setCompanyLogo] = useState(user?.photoURL || "https://res.cloudinary.com/dbanni0vy/image/upload/v1765566131/test_logo_llyfvt.avif")
   const [dob, setDob] = useState("")
 
   const handleSubmit = e => {

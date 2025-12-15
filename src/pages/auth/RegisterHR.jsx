@@ -31,8 +31,9 @@ function RegisterHR() {
         })
       })
       .then(() => {
-        navigate("/dashboard/hr")
+        navigate("/dashboard/hr/add-asset")
       })
+
       .catch(err => console.error(err))
   }
 
