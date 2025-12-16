@@ -131,12 +131,8 @@ function AssetList() {
       <div className="mx-auto max-w-6xl space-y-6">
         <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <div>
-            {/* <div className="text-xs text-[#6b778c]">Assets</div> */}
             <div className="mt-1 flex items-center gap-3">
               <h1 className="text-xl md:text-2xl font-semibold text-[var(--primary)]">Asset List</h1>
-              {/* <span className="inline-flex items-center rounded-full border border-[#e6eaf2] bg-[var(--bg-active)] px-2.5 py-1 text-xs font-semibold text-[var(--primary)]">
-                Page {currentPage} of {totalPages}
-              </span> */}
             </div>
           </div>
 
@@ -250,68 +246,76 @@ function AssetList() {
         </div>
 
         <div className="overflow-hidden rounded-xl border border-[#e6eaf2] bg-white">
-          <div className="grid grid-cols-12 gap-3 border-b border-[#eef1f6] bg-[#fbfcff] px-4 py-3 text-[12px] font-semibold text-[#6b778c]">
-            <div className="col-span-2">Image</div>
-            <div className="col-span-3">Name</div>
-            <div className="col-span-2">Type</div>
-            <div className="col-span-1 text-right">Qty</div>
-            <div className="col-span-1 text-right">Avail</div>
-            <div className="col-span-2">Date Added</div>
-            <div className="col-span-1 text-right">Action</div>
-          </div>
+          <div className="overflow-x-auto">
+            <div className="min-w-[900px]">
+              <div className="grid grid-cols-12 gap-3 border-b border-[#eef1f6] bg-[#fbfcff] px-4 py-3 text-[12px] font-semibold text-[#6b778c]">
+                <div className="col-span-2">Image</div>
+                <div className="col-span-3">Name</div>
+                <div className="col-span-2">Type</div>
+                <div className="col-span-1 text-right">Qty</div>
+                <div className="col-span-1 text-right">Avail</div>
+                <div className="col-span-2">Date Added</div>
+                <div className="col-span-1 text-right">Action</div>
+              </div>
 
-          {assets.length === 0 ? (
-            <div className="px-4 py-10 text-center text-sm text-[#6b778c]">No assets found</div>
-          ) : (
-            <div className="divide-y divide-[#eef1f6]">
-              {currentAssets.map(item => (
-                <div
-                  key={item._id}
-                  className="grid grid-cols-12 gap-3 px-4 py-3 text-sm hover:bg-[#f7faff]"
-                >
-                  <div className="col-span-2">
-                    <div className="h-11 w-11 overflow-hidden rounded-lg border border-[#e6eaf2] bg-white">
-                      <img src={item.productImage} alt={item.productName} className="h-full w-full object-cover" />
+              {assets.length === 0 ? (
+                <div className="px-4 py-10 text-center text-sm text-[#6b778c]">No assets found</div>
+              ) : (
+                <div className="divide-y divide-[#eef1f6]">
+                  {currentAssets.map(item => (
+                    <div
+                      key={item._id}
+                      className="grid grid-cols-12 gap-3 px-4 py-3 text-sm hover:bg-[#f7faff]"
+                    >
+                      <div className="col-span-2">
+                        <div className="h-11 w-11 overflow-hidden rounded-lg border border-[#e6eaf2] bg-white">
+                          <img
+                            src={item.productImage}
+                            alt={item.productName}
+                            className="h-full w-full object-cover"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="col-span-3 min-w-0">
+                        <div className="truncate font-semibold text-[#1f2a44]">{item.productName}</div>
+                        <div className="mt-1 text-[12px] text-[#6b778c]">ID: {item._id}</div>
+                      </div>
+
+                      <div className="col-span-2 text-[#1f2a44]">{item.productType}</div>
+
+                      <div className="col-span-1 text-right font-semibold text-[#1f2a44]">
+                        {item.productQuantity}
+                      </div>
+
+                      <div className="col-span-1 text-right font-semibold text-[#1f2a44]">
+                        {item.availableQuantity}
+                      </div>
+
+                      <div className="col-span-2 text-[#1f2a44]">
+                        {new Date(item.dateAdded).toLocaleDateString()}
+                      </div>
+
+                      <div className="col-span-1 flex justify-end gap-2">
+                        <button
+                          className="rounded-md bg-[#eef5ff] px-2.5 py-1 text-xs font-semibold text-[#0065ff] hover:bg-[#e3efff]"
+                          onClick={() => openAssignModal(item._id)}
+                        >
+                          Assign
+                        </button>
+                        <button
+                          className="rounded-md bg-[#fdecea] px-2.5 py-1 text-xs font-semibold text-[#c92a2a] hover:bg-[#f8d7da]"
+                          onClick={() => handleDelete(item._id)}
+                        >
+                          Delete
+                        </button>
+                      </div>
                     </div>
-                  </div>
-
-                  <div className="col-span-3 min-w-0">
-                    <div className="truncate font-semibold text-[#1f2a44]">{item.productName}</div>
-                    <div className="mt-1 text-[12px] text-[#6b778c]">ID: {item._id}</div>
-                  </div>
-
-                  <div className="col-span-2 text-[#1f2a44]">{item.productType}</div>
-
-                  <div className="col-span-1 text-right font-semibold text-[#1f2a44]">
-                    {item.productQuantity}
-                  </div>
-
-                  <div className="col-span-1 text-right font-semibold text-[#1f2a44]">
-                    {item.availableQuantity}
-                  </div>
-
-                  <div className="col-span-2 text-[#1f2a44]">
-                    {new Date(item.dateAdded).toLocaleDateString()}
-                  </div>
-
-                  <div className="col-span-1 flex justify-end gap-2">
-                    <button
-                      className="rounded-md bg-[#eef5ff] px-2.5 py-1 text-xs font-semibold text-[#0065ff] hover:bg-[#e3efff]"
-                      onClick={() => openAssignModal(item._id)}
-                    >
-                      Assign
-                    </button>
-                    <button
-                      className="rounded-md bg-[#fdecea] px-2.5 py-1 text-xs font-semibold text-[#c92a2a] hover:bg-[#f8d7da]"
-                      onClick={() => handleDelete(item._id)}
-                    >
-                      Delete
-                    </button>
-                  </div>
+                  ))}
                 </div>
-              ))}
+              )}
             </div>
-          )}
+          </div>
         </div>
 
         <div className="mt-4 flex items-center justify-end gap-2">
