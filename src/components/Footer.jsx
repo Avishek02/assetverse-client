@@ -85,7 +85,7 @@ function Footer() {
                     </svg>
                     <input type="email" className="grow" placeholder="you@company.com" required />
                   </label>
-                  <button className="btn btn-primary bg-[#0065ff] hover:bg-[#0050cc] border-none rounded-2xl" type="submit">
+                  <button className="btn btn-primary bg-[#0065ff] hover:bg-[#0050cc] border-none rounded-2xl text-white" type="submit">
                     Subscribe
                   </button>
                 </form>
