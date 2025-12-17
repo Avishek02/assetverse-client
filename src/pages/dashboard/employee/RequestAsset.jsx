@@ -24,7 +24,7 @@ function RevealSection({ children, className, style, delay = 0 }) {
     <motion.section
       className={className}
       style={style}
-      initial="hidden"
+      initial="false"
       animate={controls}
       variants={{
         hidden: { opacity: 0, y: 24 },
@@ -141,7 +141,7 @@ function RequestAsset() {
   if (loading) return <Loading />
 
   return (
-    <div className="bg-[var(--bg-page)] -m-4 p-4 md:p-6 min-h-screen">
+    <div className="bg-[var(--bg-page)] md:-m-4 p-4 md:p-6 min-h-screen">
       <div className="max-w-6xl space-y-5">
         <RevealSection delay={0} className="space-y-5">
           <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
