@@ -12,16 +12,17 @@ https://assetverse-server.onrender.com
 ---
 
 # Demo Screenshots
-## Public pages
+## 🌐Public pages
 ![Home Page](screenshots/home.png)
 
-## HR Dashboard
+## 👔HR Dashboard
 ![Dashboard](screenshots/hr-dashboard.png)
 ![All Requests](screenshots/all-requests.png)
 ![Upgrade Package](screenshots/upgrade-package.png)
 
+<br><br>
 
-## Employee Dashboard
+## 🧑‍💼Employee Dashboard
 ![My Assets](screenshots/my-assets.png)
 ![Request Assets](screenshots/request-assets.png)
 ![My Team](screenshots/my-team.png)
