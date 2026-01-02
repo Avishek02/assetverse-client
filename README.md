@@ -11,6 +11,16 @@ https://assetverse-server.onrender.com
 
 ---
 
+## Demo Screenshots
+![Home Page](screenshots/home.png)
+![Dashboard](screenshots/hr-dashboard.png)
+![My Asset](screenshots/my-asset.png)
+![All Requests](screenshots/all-requests.png)
+![Request Assets](screenshots/request-asset.png)
+![My Team](screenshots/my-team.png)
+![Upgrade Package](screenshots/upgrade-package.png)
+
+
 ## Key Features
 ### HR Manager
 - Add, list, delete assets  
