@@ -295,7 +295,7 @@ function Home() {
 
                       <div
                         className="rounded-xl border border-[#ffe7c2] bg-[#fff4e5] p-4"
-                      
+
                       >
                         <div className="text-[11px] uppercase tracking-wide text-[#b26a00]" >
                           Returnable

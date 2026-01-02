@@ -3,8 +3,8 @@
 ## Purpose
 Corporate Asset Management System for HR managers and employees.
 
-## Live URL
-https://assetverse-client.vercel.app
+## 🚀 Live Demo
+[https://assetversee.vercel.app](https://assetversee.vercel.app)
 
 ## Server API
 https://assetverse-server.onrender.com
@@ -69,7 +69,7 @@ https://assetverse-server.onrender.com
 
 ## Setup Instructions
 ```bash
-git clone https://github.com/Avishek02/assetverse-client.git
+git clone https://github.com/Avishek02/assetverse.git
 cd assetverse-client
 npm install
 npm run dev
