@@ -11,14 +11,21 @@ https://assetverse-server.onrender.com
 
 ---
 
-## Demo Screenshots
+# Demo Screenshots
+## Public pages
 ![Home Page](screenshots/home.png)
+
+## HR Dashboard
 ![Dashboard](screenshots/hr-dashboard.png)
-![My Asset](screenshots/my-asset.png)
 ![All Requests](screenshots/all-requests.png)
-![Request Assets](screenshots/request-asset.png)
-![My Team](screenshots/my-team.png)
 ![Upgrade Package](screenshots/upgrade-package.png)
+
+
+## Employee Dashboard
+![My Assets](screenshots/my-asset.png)
+![Request Assets](screenshots/request-assets.png)
+![My Team](screenshots/my-team.png)
+
 
 
 ## Key Features
