@@ -1,4 +1,4 @@
-# AssetVerse (Client)
+# AssetVerse (Corporate Asset Management)
 
 ## Purpose
 Corporate Asset Management System for HR managers and employees.
@@ -22,7 +22,7 @@ https://assetverse-server.onrender.com
 
 
 ## Employee Dashboard
-![My Assets](screenshots/my-asset.png)
+![My Assets](screenshots/my-assets.png)
 ![Request Assets](screenshots/request-assets.png)
 ![My Team](screenshots/my-team.png)
 
